@@ -1,7 +1,7 @@
 {
-    "name": "getcookies",
+    "name": "FXSwift-Web",
     "version": "1.0.0",
-    "description": "\"Created by Dana, Engie, Priya and Ruth",
+    "description": "\"Created by Dana",
     "main": "index.js",
     "scripts": {
       "start": "node server",
