@@ -1,13 +1,13 @@
 import React from 'react'
 // import { HashRouter as Router, Route, Link } from 'react-router-dom'
-// import converter from './converter'
+import Idr from './Idr'
 import {getConversion} from '../api.js'
 
 export default class App extends React.Component {
     constructor(props) {
         super(props)
         this.state={
-            
+            rates: []
         }
         this.updateRates = this.updateRates.bind(this)
         // this.state.rates1 = this.state.rates1.bind(this)
@@ -51,17 +51,17 @@ export default class App extends React.Component {
         <div class="form-group">
             <label for="sel1">Select Currency:</label>
                 <select class="form-control" id="sel1">
-                    <option>{this.rates}</option>
-                    <option>{this.rates}</option>
-                    <option>{this.rates}</option>
+                    <option>{this.state.rates.length !== 0 && this.state.newRates}NZD</option>
+                    <option>{this.state.rates.length !== 0 && this.state.newRates}IDR</option>
+                    <option>{this.state.rates.length !== 0 && this.state.newRates}RUB</option>
                 </select>
         </div>
         <div class="form-group">
         <label for="sel1">Select Currency:</label>
             <select class="form-control" id="sel1">
-                <option>{this.rates}</option>
-                <option>{this.rates}</option>
-                <option>{this.rates}</option>
+                <option>{this.state.rates.length !== 0 && this.state.newRates}NZD</option>
+                <option>{this.state.rates.length !== 0 && this.state.newRates}IDR</option>
+                <option>{this.state.rates.length !== 0 && this.state.newRates}RUB</option>
             </select>
     </div>
 </div>
