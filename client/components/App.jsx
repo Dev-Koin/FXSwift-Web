@@ -7,7 +7,7 @@ export default class App extends React.Component {
     constructor(props) {
         super(props)
         this.state={
-            rates:[],
+            
         }
         this.updateRates = this.updateRates.bind(this)
         // this.state.rates1 = this.state.rates1.bind(this)
@@ -23,13 +23,13 @@ export default class App extends React.Component {
     updateRates(err, res) {
         let newRates = {
             NZD: res.rates.NZD,
-            AUD: res.rates.AUD,
-            GBP: res.rates.GBP
+            IDR: res.rates.IDR,
+            RUB: res.rates.RUB
         }
         this.setState({
             rates: newRates
         })
-        console.log('hey', newRates)
+        console.log('hai', newRates)
     }
 
     handleChange(e) {
@@ -51,20 +51,20 @@ export default class App extends React.Component {
         <div class="form-group">
             <label for="sel1">Select Currency:</label>
                 <select class="form-control" id="sel1">
-                    <option>{this.updateRates}</option>
-                    <option>{this.updateRates}</option>
-                    <option>{this.updateRates}</option>
+                    <option>{this.rates}</option>
+                    <option>{this.rates}</option>
+                    <option>{this.rates}</option>
                 </select>
         </div>
         <div class="form-group">
         <label for="sel1">Select Currency:</label>
             <select class="form-control" id="sel1">
-                <option>{this.updateRates}</option>
-                <option>{this.updateRates}</option>
-                <option>{this.updateRates}</option>
+                <option>{this.rates}</option>
+                <option>{this.rates}</option>
+                <option>{this.rates}</option>
             </select>
     </div>
 </div>
         )
     }
-}
+} 
