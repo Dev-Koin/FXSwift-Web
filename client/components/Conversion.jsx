@@ -1,6 +1,6 @@
 import React from 'react'
-import {getConversion} from '../api.js'
 import Rupiah from './Rupiah'
+import {getConversion} from '../api.js'
 
 export default class App extends React.Component {
     constructor(props) {
@@ -17,23 +17,24 @@ export default class App extends React.Component {
         getConversion(this.updateRates)
     }
 
-    updateRates(err, res) {
-        this.setState(
-            {rates: res.rates}
-        )
-    }
-
     // updateRates(err, res) {
-    //     let newRates = {
-    //         NZD: res.rates.NZD,
-    //         IDR: res.rates.IDR,
-    //         RUB: res.rates.RUB
-    //     }
-    //     this.setState({
-    //         rates: newRates
-    //     })
-    //     console.log('hai', newRates)
+    //     this.setState(
+    //         {rates: res.rates}
+    //     )
+    //     console.log('halo', this.rates)
     // }
+
+    updateRates(err, res) {
+        let newRates = {
+            NZD: res.rates.NZD,
+            IDR: res.rates.IDR,
+            RUB: res.rates.RUB
+        }
+        this.setState({
+            rates: newRates
+        })
+        console.log('halo', newRates)
+    }
 
     handleChange(e) {
         var key = e.target.name
@@ -49,27 +50,27 @@ export default class App extends React.Component {
     render() {
         console.log('hey', this.state)
         return (
-       <div>    
+            <div>    
                  
-        <div class="form-group">
+            <div class="form-group">
+                <label for="sel1">Select Currency:</label>
+                    <select class="form-control" id="sel1">
+                        <option>{this.state.rates.length !== 0 && <Rupiah rates={this.state.rates.IDR}/>}IDR</option>
+                        <option>{this.state.rates.length !== 0 && <Rupiah rates={this.state.rates.IDR}/>}RUB</option>
+                        <option>{this.state.rates.length !== 0 && <Rupiah rates={this.state.rates.IDR}/>}NZD</option>
+                    </select>
+                    <input type="text"></input>
+            </div>
+            <div class="form-group">
             <label for="sel1">Select Currency:</label>
                 <select class="form-control" id="sel1">
-                    <option>{this.state.rates.length !== 0 && <Rupiah rates={this.state.rates.IDR}/>}IDR</option>
-                    <option>{this.state.rates.length !== 0 && <Rupiah rates={this.state.rates.IDR}/>}RUB</option>
-                    <option>{this.state.rates.length !== 0 && <Rupiah rates={this.state.rates.IDR}/>}NZD</option>
+                <option>{this.state.rates.length !== 0 && <Rupiah rates={this.state.rates.IDR}/>}IDR</option>
+                <option>{this.state.rates.length !== 0 && <Rupiah rates={this.state.rates.IDR}/>}RUB</option>
+                <option>{this.state.rates.length !== 0 && <Rupiah rates={this.state.rates.IDR}/>}NZD</option>
                 </select>
                 <input type="text"></input>
         </div>
-        <div class="form-group">
-        <label for="sel1">Select Currency:</label>
-            <select class="form-control" id="sel1">
-            <option>{this.state.rates.length !== 0 && <Rupiah rates={this.state.rates.IDR}/>}IDR</option>
-            <option>{this.state.rates.length !== 0 && <Rupiah rates={this.state.rates.IDR}/>}RUB</option>
-            <option>{this.state.rates.length !== 0 && <Rupiah rates={this.state.rates.IDR}/>}NZD</option>
-            </select>
-            <input type="text"></input>
     </div>
-</div>
         )
     }
 } 

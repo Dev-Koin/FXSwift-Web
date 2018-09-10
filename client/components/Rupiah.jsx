@@ -4,14 +4,14 @@ export default class Rupiah extends React.Component {
     constructor(props) {
         super(props)
         this.state={
-            rates: props.rates.IDR
+            rates: props.rates
         }
     }
 
     render() {
         return (
             <div>
-                <input className="IDR" src={this.state.rates} />
+                <input src={this.state.rates} />
             </div>
         )
     }
