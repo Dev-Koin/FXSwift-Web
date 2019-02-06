@@ -9,7 +9,7 @@ export default class Conversion extends React.Component {
             rates: []
         }
         this.updateRates = this.updateRates.bind(this)
-        // this.handleChange = this.handleChange.bind(this)
+        this.handleChange = this.handleChange.bind(this)
         // this.handleSubmit = this.handleSubmit.bind(this)
     }
 
@@ -46,7 +46,7 @@ export default class Conversion extends React.Component {
         return (
             <div>
                 <p>Today's Russian Rubel is {this.state.rates.RUB} and it is equal to 1 USD</p>
-                <input onChange={this.handleChange}></input>
+                <input onChange={this.handleChange} type='number'></input>
                 <p>Today's Indonesian Rupiah is {this.state.rates.IDR} and it is equal to 1 USD</p>
                 <p>Today's New Zealand Dollar is {this.state.rates.NZD} and it is equal to 1 USD</p>
             </div>
