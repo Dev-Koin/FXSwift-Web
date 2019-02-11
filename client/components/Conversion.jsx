@@ -1,5 +1,5 @@
 import React from 'react'
-import Rupiah from './Rupiah'
+//import Price from 'react-forex-price'
 import {getConversion} from '../api.js'
 
 export default class Conversion extends React.Component {
@@ -10,37 +10,31 @@ export default class Conversion extends React.Component {
         }
         this.updateRates = this.updateRates.bind(this)
         this.handleChange = this.handleChange.bind(this)
-        this.handleSubmit = this.handleSubmit.bind(this)
+        // this.handleSubmit = this.handleSubmit.bind(this)
     }
 
-    componentDidMount(){
-        getConversion(this.updateRates)
-    }
+   componentDidMount(){
+       getConversion(this.updateRates)
+   }
 
-    // updateRates(err, res) {
-    //     this.setState(
-    //         {rates: res.rates}
-    //     )
-    //     console.log('halo', this.rates)
-    // }
 
-    updateRates(err, res) {
-        let newRates = {
-            NZD: res.rates.NZD,
-            IDR: res.rates.IDR,
-            RUB: res.rates.RUB
-        }
-        this.setState({
-            rates: newRates
-        })
-        console.log('halo', newRates)
+   updateRates(err, res) {
+    let newRates = {
+        NZD: res.rates.NZD,
+        IDR: res.rates.IDR,
+        RUB: res.rates.RUB
     }
+    this.setState({
+        rates: newRates
+    })
+    console.log('halo', newRates)
+}
 
-    handleChange(e) {
-        var key = e.target.name
-        var value = e.target.value
-        this.setState({[key]: value})
-    }
+   handleChange(e) {
+       var key = e.target.name
+       var value = e.target.value
+       this.setState({[key]: value})
+   }
 
     handleSubmit(e) {
         e.preventDefault()
@@ -50,27 +44,14 @@ export default class Conversion extends React.Component {
     render() {
         console.log('hey', this.state)
         return (
-            <div>    
-                 
-            <div class="form-group">
-                <label for="sel1">Select Currency:</label>
-                    <select class="form-control" id="sel1">
-                        <option>{this.state.rates.length !== 0 && <Rupiah rates={this.state.rates.IDR}/>}IDR</option>
-                        <option>{this.state.rates.length !== 0 && <Rupiah rates={this.state.rates.IDR}/>}RUB</option>
-                        <option>{this.state.rates.length !== 0 && <Rupiah rates={this.state.rates.IDR}/>}NZD</option>
-                    </select>
-                    <input type="text"></input>
+            <div>
+                <p>Today's Russian Rubel is {this.state.rates.RUB} and it is equal to 1 USD</p>
+                <input onChange={this.handleChange} type='number'></input>
+                <p>Today's Indonesian Rupiah is {this.state.rates.IDR} and it is equal to 1 USD</p>
+                <input onChange={this.handleChange} type='number'></input>
+                <p>Today's New Zealand Dollar is {this.state.rates.NZD} and it is equal to 1 USD</p>
+                <input onChange={this.handleChange} type='number'></input>
             </div>
-            <div class="form-group">
-            <label for="sel1">Select Currency:</label>
-                <select class="form-control" id="sel1">
-                <option>{this.state.rates.length !== 0 && <Rupiah rates={this.state.rates.IDR}/>}IDR</option>
-                <option>{this.state.rates.length !== 0 && <Rupiah rates={this.state.rates.IDR}/>}RUB</option>
-                <option>{this.state.rates.length !== 0 && <Rupiah rates={this.state.rates.IDR}/>}NZD</option>
-                </select>
-                <input type="text"></input>
-        </div>
-    </div>
         )
     }
 } 
