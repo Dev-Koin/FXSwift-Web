@@ -10,7 +10,7 @@ export default class Conversion extends React.Component {
         }
         this.updateRates = this.updateRates.bind(this)
         this.handleChange = this.handleChange.bind(this)
-        // this.handleSubmit = this.handleSubmit.bind(this)
+        this.handleSubmit = this.handleSubmit.bind(this)
     }
 
    componentDidMount(){
@@ -45,13 +45,19 @@ export default class Conversion extends React.Component {
         console.log('hey', this.state)
         return (
             <div>
-                <p>Today's Russian Rubel is {this.state.rates.RUB} and it is equal to 1 USD</p>
-                <input onChange={this.handleChange} type='number'></input>
+                <div id='form'>
+                    <form onSubmit={this.handleSubmit}>
+                        <p>Today's Russian Rubel is {this.state.rates.RUB} and it is equal to 1 USD</p>
+                        <input onChange={this.handleChange} type='number'></input>
+                        <input onClick={this.state.rates.RUB = this.handleChange} type='submit' value='Submit!'/>
+                    </form>
+                </div>
                 <p>Today's Indonesian Rupiah is {this.state.rates.IDR} and it is equal to 1 USD</p>
                 <input onChange={this.handleChange} type='number'></input>
                 <p>Today's New Zealand Dollar is {this.state.rates.NZD} and it is equal to 1 USD</p>
                 <input onChange={this.handleChange} type='number'></input>
             </div>
+        
         )
     }
 } 
