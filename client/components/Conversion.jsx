@@ -39,6 +39,8 @@ export default class Conversion extends React.Component {
     handleSubmit(e) {
         e.preventDefault()
     }
+
+
 // Try to use .map to render currencies
 // make sure storing from the API. make sure that what I wanted in state look like what it looks like
     render() {
@@ -46,10 +48,10 @@ export default class Conversion extends React.Component {
         return (
             <div>
                 <div id='form'>
-                    <form onSubmit={this.handleSubmit = this.handleChange}>
-                        <p>Today's Russian Rubel is {this.state.rates.RUB} and it is equal to 1 USD</p>
-                        <input onChange={this.handleChange} type='number'></input>
-                        <input onClick={this.handleChange} type='submit' value='submit' />
+                    <form onSubmit={this.handleSubmit}>
+                        <p>Today's Russian Rubel is {this.state.rates.RUB * 3} and it is equal to 1 USD</p>
+                        <input onChange={this.handleChange} type='number' value={this.state.rates}></input>
+                        <input onClick={this.handleSubmit} type='submit' value='Submit' />
                     </form>
                 </div>
                 <p>Today's Indonesian Rupiah is {this.state.rates.IDR} and it is equal to 1 USD</p>
