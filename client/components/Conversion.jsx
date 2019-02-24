@@ -48,7 +48,7 @@ export default class Conversion extends React.Component {
                 <div id='form'>
                     <form onSubmit={this.handleSubmit = this.handleChange}>
                         <p>Today's Russian Rubel is {this.state.rates.RUB} and it is equal to 1 USD</p>
-                        <input onChange={this.handleChange} type='number' value={this.state.rates.RUB}></input>
+                        <input onChange={this.handleChange} type='number'></input>
                         <input onClick={this.handleChange} type='submit' value='submit' />
                     </form>
                 </div>
