@@ -18,7 +18,7 @@ export default class Conversion extends React.Component {
    }
 
 
-   updateRates(err, res) {
+   updateRates(err, res, number) {
     let newRates = {
         NZD: res.rates.NZD,
         IDR: res.rates.IDR,
@@ -28,7 +28,7 @@ export default class Conversion extends React.Component {
         rates: newRates
     })
     console.log('halo', newRates)
-}
+}   
 
    handleChange(e) {
        var key = e.target.name
@@ -51,7 +51,10 @@ export default class Conversion extends React.Component {
                     <form onSubmit={this.handleSubmit}>
                         <p>Today's Russian Rubel is {this.state.rates.RUB} and it is equal to 1 USD</p>
                         <input onChange={this.handleChange} type='number' name='rate' placeholder='enter currency'></input>
-                        <input onClick={this.onChange} type='submit' value='Submit'/>
+                        <input onClick={ () => {
+                            this.state.rates.RUB * this.handleChange;
+                        } 
+                        } type='submit' value='Submit'/>
                     </form>
                 </div>
                 <p>Today's Indonesian Rupiah is {this.state.rates.IDR} and it is equal to 1 USD</p>
