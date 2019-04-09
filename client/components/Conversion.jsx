@@ -1,6 +1,7 @@
 import React from 'react'
 //import Price from 'react-forex-price'
 import {getConversion} from '../api.js'
+import Logic from './Logic'
 
 export default class Conversion extends React.Component {
     constructor(props) {
@@ -9,8 +10,6 @@ export default class Conversion extends React.Component {
             rates: []
         }
         this.updateRates = this.updateRates.bind(this)
-        this.handleChange = this.handleChange.bind(this)
-        this.handleSubmit = this.handleSubmit.bind(this)
     }
 
    componentDidMount(){
@@ -30,16 +29,6 @@ export default class Conversion extends React.Component {
     console.log('halo', newRates)
 }   
 
-   handleChange(e) {
-       var key = e.target.name
-       var value = e.target.value
-       this.setState({[key]: value})
-   }
-
-    handleSubmit(e) {
-        e.preventDefault()
-    }
-
 
 // Try to use .map to render currencies
 // make sure storing from the API. make sure that what I wanted in state look like what it looks like
@@ -47,20 +36,12 @@ export default class Conversion extends React.Component {
         console.log('hey', this.state)
         return (
             <div>
-                <div id='form'>
-                    <form onSubmit={this.handleSubmit}>
-                        <p>Today's Russian Rubel is {this.state.rates.RUB} and it is equal to 1 USD</p>
-                        <input onChange={this.handleChange} type='number' name='rate' placeholder='enter currency'></input>
-                        <input onClick={ () => {
-                            this.state.rates.RUB * onChange && this.handleChange;
-                        } 
-                        } type='submit' value='submit'/>
-                    </form>
+                <div>
+                {this.state.rates.RUB} == <Logic input={this.handleChange}  />
                 </div>
+                <p>Today's Russian Rubel is {this.state.rates.RUB} and it is equal to 1 USD</p>
                 <p>Today's Indonesian Rupiah is {this.state.rates.IDR} and it is equal to 1 USD</p>
-                <input onChange={this.handleChange} type='number'></input>
                 <p>Today's New Zealand Dollar is {this.state.rates.NZD} and it is equal to 1 USD</p>
-                <input onChange={this.handleChange} type='number'></input>
             </div>
         
         )
