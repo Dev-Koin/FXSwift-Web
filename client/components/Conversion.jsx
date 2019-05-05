@@ -1,7 +1,7 @@
 import React from 'react'
 //import Price from 'react-forex-price'
 import {getConversion} from '../api.js'
-import Logic from './Logic'
+//import Logic from './Logic'
 
 export default class Conversion extends React.Component {
     constructor(props) {
@@ -10,12 +10,23 @@ export default class Conversion extends React.Component {
             rates: []
         }
         this.updateRates = this.updateRates.bind(this)
+        this.handleChange = this.handleChange.bind(this)
+        this.handleSubmit = this.handleSubmit.bind(this)
     }
 
    componentDidMount(){
        getConversion(this.updateRates)
    }
 
+   handleChange(e) {
+    var key = e.target.name
+    var value = e.target.value
+    this.setState({[key]: value})
+}
+
+ handleSubmit(e) {
+     e.preventDefault()
+ }
 
    updateRates(err, res, number) {
     let newRates = {
@@ -27,7 +38,8 @@ export default class Conversion extends React.Component {
         rates: newRates
     })
     console.log('halo', newRates)
-}   
+}  
+
 
 
 // Try to use .map to render currencies
@@ -37,7 +49,13 @@ export default class Conversion extends React.Component {
         return (
             <div>
                 <div>
-                {this.state.rates.RUB * <Logic />} />
+                    <input onChange={this.handleChange} type='number' placeholder='currency'></input> * <input onChange={this.state.rates.RUB} type='number' placeholder={this.state.rates.RUB}></input>
+                    <br />
+                    <input onChange={this.handleChange} type='number' placeholder='currency'></input>
+                    <br />
+                    <input onChange={this.handleChange} type='number' placeholder='currency'></input>
+                    <br />
+                    <input onClick={this.state} type='submit' value='Submit!' />
                 </div>
                 <p>Today's Russian Rubel is {this.state.rates.RUB} and it is equal to 1 USD</p>
                 <p>Today's Indonesian Rupiah is {this.state.rates.IDR} and it is equal to 1 USD</p>
