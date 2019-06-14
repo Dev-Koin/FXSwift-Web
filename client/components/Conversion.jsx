@@ -49,13 +49,13 @@ export default class Conversion extends React.Component {
         return (
             <div>
                 <div>
-                    <input onChange={this.handleChange} type='number' placeholder='currency'></input> * <input onChange={this.state.rates.RUB} type='number' placeholder={this.state.rates.RUB}></input>
+                    <input onChange={this.handleChange} type='number' placeholder='currency'></input> 
                     <br />
                     <input onChange={this.handleChange} type='number' placeholder='currency'></input>
                     <br />
                     <input onChange={this.handleChange} type='number' placeholder='currency'></input>
                     <br />
-                    <input onClick={this.state} type='submit' value='Submit!' />
+                    <input onClick={this.state.rates} type='submit' value='Submit!' />
                 </div>
                 <p>Today's Russian Rubel is {this.state.rates.RUB} and it is equal to 1 USD</p>
                 <p>Today's Indonesian Rupiah is {this.state.rates.IDR} and it is equal to 1 USD</p>
